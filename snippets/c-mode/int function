@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: int-function
+# key: intf
+# --
+int $1($2) 
+{
+
+    return 0;
+}

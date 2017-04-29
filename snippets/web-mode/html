@@ -1,0 +1,18 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: html
+# key: html
+# --
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>$1</title>
+        <meta charset="utf-8" />
+    </head>
+    <body>
+
+        <script text="text/javascript" src="$2"></script>
+    </body>
+
+</html>
