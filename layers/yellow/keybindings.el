@@ -14,3 +14,7 @@
 
 ;; js 的多行注释
 (global-set-key (kbd "M-m o m") 'my-comment-region)
+
+;; package.el 里面的方法, 自动模板的快捷键
+;; (global-set-key (kbd "M-m o s") 'autoinsert-yas-expand)
+

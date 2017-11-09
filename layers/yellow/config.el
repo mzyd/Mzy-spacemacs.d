@@ -23,3 +23,25 @@
               (regexp-quote sym))))
         regexp-history)
   (call-interactively 'occur))
+
+;; 加强hippie补全
+(setq hippie-expand-try-functions-list '(try-expand-dabbrev
+                                         try-expand-dabbrev-all-buffer
+                                         try-expand-dabbrev-from-kill
+                                         try-complete-file-name-partially
+                                         try-complete-file-name
+                                         try-expand-all-abbrevs
+                                         try-expand-list
+                                         try-expand-line
+                                         try-complete-lisp-symbol-partially
+                                         try-complete-symbol))
+
+
+
+;; 关闭自动备份
+(setq make-backup-files nil)
+
+;; 设置禁止 auto-save
+(setq auto-save-default nil)
+
+

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: node-require
+# key: rr
+# --
+require('$1');

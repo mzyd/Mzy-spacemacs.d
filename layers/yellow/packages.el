@@ -59,6 +59,7 @@
     ;; ()
     )
   )
+
 (defun my-toggle-web-indent ()
   (interactive)
   ;; web development
@@ -103,3 +104,18 @@
       (unless (re-search-forward "\\/\\*" nil t)
         (insert "/*\n")))
     ))
+
+;; 自动填充内容
+;; (defun autoinsert-yas-expand()
+  ;; "Replace text in yasnippet template."
+  ;; (yas-expand-snippet (buffer-string) (point-min) (point-max)))
+
+; (use-package autoinsert
+;   :config
+;   (define-auto-insert "\\.html?$" ["default-html.html" ha/autoinsert-yas-expand]))
+
+
+(defun my-web-mode-expand ()
+  (global-set-key 'C-i 'yas-expand))
+(add-hook 'web-mode-hook 'my-web-mode-expand)
+
