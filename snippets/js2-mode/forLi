@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
 # contributor: Mzy
 # name: forli
-# key: forli
+# key: forl
 # --
 for ( let i = $1; i < $2; i++ ) {
     $3

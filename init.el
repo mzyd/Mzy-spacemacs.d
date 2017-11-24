@@ -166,7 +166,7 @@ values."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Source Code Pro"
                                ; 16 / 18
-                               :size 18
+                               :size 20
                                :weight ultra-light
                                :width normal
                                :powerline-scale 1.1)
@@ -192,7 +192,7 @@ values."
    ;; and TAB or <C-m> and RET.
    ;; In the terminal, these pairs are generally indistinguishable, so this only
    ;; works in the GUI. (default nil)
-   dotspacemacs-distinguish-gui-tab nil
+   dotspacemacs-distinguish-gui-tab t
    ;; If non nil `Y' is remapped to `y$' in Evil states. (default nil)
    dotspacemacs-remap-Y-to-y$ nil
    ;; If non-nil, the shift mappings `<' and `>' retain visual state if used
@@ -366,7 +366,7 @@ you should place your code here."
   (setq org-src-fontify-natively t)
   (setq aya-persist-snippets-dir "/Users/Mzy/.spacemacs.d/snippets/")
   (global-set-key (kbd "TAB") 'yas-expand)
-  (global-set-key (kbd "s-;") 'hippie-expand)
+  ;; (global-set-key (kbd "s-;") 'hippie-expand)
 
   ;; 一次删除多个空格
   (global-hungry-delete-mode )
@@ -385,9 +385,16 @@ you should place your code here."
   ;; 设置js文档注释
   (global-set-key (kbd "M-m o c") 'js-doc-insert-function-doc-snippet)
 
-  ;; (global-set-key (kbd "s-i i") 'emmet-expand)
+  ;; web-mode 内手动调用, 显示文件路径.
+  (global-set-key (kbd "s-;") 'company-files)
 
-  )
+  ;; 设置web-mode的补全
+  ;; (evil-define-key 'insert evil-insert-state-map (kbd "<C-i>") 'yas-expand)
+
+  ;; org-mode 自动换行
+  (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
+
+  ); user-config end
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -396,6 +403,9 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
  '(exec-path
    (quote
     ("/usr/local/bin/" "/usr/bin/" "/bin/" "/usr/sbin/" "/sbin/" "/usr/local/Cellar/emacs-plus/25.1/libexec/emacs/25.1/x86_64-apple-darwin15.5.0/" "/Users/Mzy/.nvm/versions/node/v6.4.0/bin/tern")))
