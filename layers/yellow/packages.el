@@ -115,7 +115,7 @@
 ;   (define-auto-insert "\\.html?$" ["default-html.html" ha/autoinsert-yas-expand]))
 
 
-(defun my-web-mode-expand ()
-  (global-set-key 'C-i 'yas-expand))
-(add-hook 'web-mode-hook 'my-web-mode-expand)
+;; (defun my-web-mode-expand ()
+;;   (global-set-key 'C-i 'yas-expand))
+;; (add-hook 'web-mode-hook 'my-web-mode-expand)
 
