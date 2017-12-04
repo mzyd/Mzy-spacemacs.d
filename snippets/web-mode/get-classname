@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: get-classname
+# key: getclass
+# --
+getElementsByClassName("$1")

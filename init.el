@@ -64,6 +64,8 @@ values."
    dotspacemacs-additional-packages '(
                                       ember-mode
                                       vue-mode
+                                      react-snippets
+                                      ;; react-mode
                                       )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -83,7 +85,7 @@ values."
                                                    fancy-battery org-present orgit orglue
                                                    helm-flyspell flyspell-correct-helm clean-aindent-mode
                                                    helm-c-yasnippet ace-jump-helm-line helm-make
-                                                   helm-themes helm-swoop helm-spacemacs-help smeargle
+                                                   helm-themes helm-swoop smeargle
                                                    ido-vertical-mode flx-ido company-quickhelp counsel-projectile
                                                    window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
                                                    )
@@ -344,10 +346,6 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq ns-use-srgb-colorspace nil)
   (fringe-mode 0)
 
-  ;; (setenv "PATH" (concat (getenv "PATH") ":/Users/Mzy/.nvm/versions/node/v6.4.0/bin/tern"))
-  ;; (setq exec-path (append exec-path '("/Users/Mzy/.nvm/versions/node/v6.4.0/bin/tern")))
-
-
   ) ; user-init end
 
 (defun dotspacemacs/user-config ()
@@ -414,10 +412,10 @@ you should place your code here."
  '(exec-path-from-shell-arguments (quote ("-l")))
  '(package-selected-packages
    (quote
-    (monokai-alt-theme monochrome-theme monokai-theme edit-indirect ssass-mode ac-php ac-php-core company-php php-runtime php-scratch phpunit phpcbf php-auto-yasnippets drupal-mode php-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic org-themis org-beautify-theme vue-html-mode vue-mode ember-yasnippets ember-mode youdao-dictionary names chinese-word-at-point web-mode tagedit slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake pug-mode minitest less-css-mode helm-gitignore helm-css-scss haml-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor emmet-mode company-web web-completion-data chruby bundler inf-ruby wgrep unfill smex org-projectile org-present org-pomodoro alert log4e gntp org-download mwim mmm-mode markdown-toc markdown-mode ivy-hydra htmlize helm-company helm-c-yasnippet gnuplot gh-md fuzzy flycheck-pos-tip pos-tip flycheck counsel-projectile counsel swiper ivy company-tern dash-functional company-statistics company auto-yasnippet ac-ispell auto-complete web-beautify tern livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc coffee-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (react-snippets monokai-alt-theme monochrome-theme monokai-theme edit-indirect ssass-mode ac-php ac-php-core company-php php-runtime php-scratch phpunit phpcbf php-auto-yasnippets drupal-mode php-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic org-themis org-beautify-theme vue-html-mode vue-mode ember-yasnippets ember-mode youdao-dictionary names chinese-word-at-point web-mode tagedit slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake pug-mode minitest less-css-mode helm-gitignore helm-css-scss haml-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor emmet-mode company-web web-completion-data chruby bundler inf-ruby wgrep unfill smex org-projectile org-present org-pomodoro alert log4e gntp org-download mwim mmm-mode markdown-toc markdown-mode ivy-hydra htmlize helm-company helm-c-yasnippet gnuplot gh-md fuzzy flycheck-pos-tip pos-tip flycheck counsel-projectile counsel swiper ivy company-tern dash-functional company-statistics company auto-yasnippet ac-ispell auto-complete web-beautify tern livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc coffee-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((((class color) (min-colors 89)) (:background "#262626" :foreground "#f8f8f2")))))

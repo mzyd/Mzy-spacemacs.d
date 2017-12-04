@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: query-elem
+# key: qq
+# --
+querySelector("$1")

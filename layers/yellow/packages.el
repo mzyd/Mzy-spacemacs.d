@@ -119,3 +119,21 @@
 ;;   (global-set-key 'C-i 'yas-expand))
 ;; (add-hook 'web-mode-hook 'my-web-mode-expand)
 
+(defun html/init-emmet-mode ()
+  (use-package emmet-mode
+    :defer t
+    :init (spacemacs/add-to-hooks 'emmet-mode '(css-mode-hook
+                                                html-mode-hook
+                                                sass-mode-hook
+                                                scss-mode-hook
+                                                web-mode-hook))
+    :config
+    (progn
+      (evil-define-key 'insert emmet-mode-keymap (kbd "<C-i>") 'spacemacs/emmet-expand)
+      (evil-define-key 'insert emmet-mode-keymap (kbd "<C-i>") 'spacemacs/emmet-expand)
+      (evil-define-key 'emacs emmet-mode-keymap (kbd "<C-i>") 'spacemacs/emmet-expand)
+      (evil-define-key 'emacs emmet-mode-keymap (kbd "<C-i>") 'spacemacs/emmet-expand)
+      (evil-define-key 'hybrid emmet-mode-keymap (kbd "<C-i>") 'spacemacs/emmet-expand)
+      (evil-define-key 'hybrid emmet-mode-keymap (kbd "<C-i>") 'spacemacs/emmet-expand)
+      (spacemacs|hide-lighter emmet-mode))))
+
