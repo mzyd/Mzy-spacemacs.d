@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: class
+# key: cc
+# --
+class $1 extends React.Component {
+  constructor(props) {
+    super(props);
+    $2
+  }
+  render() {
+    $3
+  }
+}

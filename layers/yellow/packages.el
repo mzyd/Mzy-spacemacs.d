@@ -86,11 +86,6 @@
   (setq web-mode-code-indent-offset 2)   ; web-mode, js code in html file
   )
 (add-hook 'web-mode-hook 'my-web-mode-indent-setup)
-;; (defun yellow/init-occur-mode()
-;;   (evilified-state-evilify-map occur-mode-map
-;;     :mode occur-mode)
-;;   )
-;;; packages.el ends here
 
 ;; js 多行注释 绑定快捷键: spc o m
 (defun my-comment-region()
@@ -104,20 +99,6 @@
       (unless (re-search-forward "\\/\\*" nil t)
         (insert "/*\n")))
     ))
-
-;; 自动填充内容
-;; (defun autoinsert-yas-expand()
-  ;; "Replace text in yasnippet template."
-  ;; (yas-expand-snippet (buffer-string) (point-min) (point-max)))
-
-; (use-package autoinsert
-;   :config
-;   (define-auto-insert "\\.html?$" ["default-html.html" ha/autoinsert-yas-expand]))
-
-
-;; (defun my-web-mode-expand ()
-;;   (global-set-key 'C-i 'yas-expand))
-;; (add-hook 'web-mode-hook 'my-web-mode-expand)
 
 (defun html/init-emmet-mode ()
   (use-package emmet-mode
@@ -137,3 +118,67 @@
       (evil-define-key 'hybrid emmet-mode-keymap (kbd "<C-i>") 'spacemacs/emmet-expand)
       (spacemacs|hide-lighter emmet-mode))))
 
+
+;; ---------------------- auto save ----------------------
+(defgroup auto-save nil
+  "Auto save file when emacs idle."
+  :group 'auto-save)
+
+(defcustom auto-save-idle 1
+  "The idle seconds to auto save file."
+  :type 'integer
+  :group 'auto-save)
+
+(defcustom auto-save-slient nil
+  "Nothing to dirty minibuffer if this option is non-nil."
+  :type 'boolean
+  :group 'auto-save)
+
+(defun auto-save-buffers ()
+  (interactive)
+  (let ((autosave-buffer-list))
+    (save-excursion
+      (dolist (buf (buffer-list))
+        (set-buffer buf)
+        (if (and (buffer-file-name) (buffer-modified-p))
+            (progn
+              (push (buffer-name) autosave-buffer-list)
+              (if auto-save-slient
+                  (with-temp-message ""
+                    (basic-save-buffer))
+                (basic-save-buffer))
+              )))
+      ;; Tell user when auto save files.
+      (unless auto-save-slient
+        (cond
+         ;; It's stupid tell user if nothing to save.
+         ((= (length autosave-buffer-list) 1)
+          (message "# Saved %s" (car autosave-buffer-list)))
+         ((> (length autosave-buffer-list) 1)
+          (message "# Saved %d files: %s"
+                   (length autosave-buffer-list)
+                   (mapconcat 'identity autosave-buffer-list ", ")))))
+      )))
+
+(defun auto-save-enable ()
+  (interactive)
+  (run-with-idle-timer auto-save-idle t #'auto-save-buffers)
+  )
+
+;; ---------------------- auto save end ----------------------
+
+;; ----------- 设置 company 的前缀长度和时间, 为了解决 react-mode 里面的不正常行为.
+(defun mzy/company-init ()
+  "set my own company-idle-delay and company-minimum-prefix-length"
+  (interactive)
+  (setq-local company-idle-delay mzy/company-idle-delay)
+  (set (make-local-variable 'company-minimum-prefix-length)
+       mzy/company-minimum-prefix-length))
+
+(defvar mzy/company-minimum-prefix-length 2
+  "my own variable for company-minimum-prefix-length")
+
+(defvar mzy/company-idle-delay 0
+  "my own variable for company-idle-delay")
+
+(add-hook 'company-mode-hook #'mzy/company-init)

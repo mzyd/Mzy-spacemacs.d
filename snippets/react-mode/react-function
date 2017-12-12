@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: React-function
+# key: rfn
+# --
+$1($2) {
+  $3
+}
