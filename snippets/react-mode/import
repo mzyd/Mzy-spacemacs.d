@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: React-import
+# key: im
+# --
+import React from 'react'
+import { render } from 'react-dom'
+import { Router, Route, hashHistory } from 'react-router'

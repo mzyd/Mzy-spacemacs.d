@@ -383,6 +383,9 @@ you should place your code here."
   ;; web-mode 内手动调用, 显示文件路径.
   (global-set-key (kbd "s-;") 'company-files)
 
+  ;; 选中当前光标处区域
+  (global-set-key (kbd "C-=") 'er/expand-region)
+
   ;; org-mode 自动换行
   (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
 
@@ -391,7 +394,8 @@ you should place your code here."
   (setq auto-save-slient t)
 
   ;; normal-state 下 RET 键打开最近的 buffer 列表
-  (define-key evil-normal-state-map (kbd "<RET>") 'helm-mini)
+  ;; (define-key evil-normal-state-map (kbd "<RET>") 'helm-mini)
+  (define-key evil-normal-state-map (kbd "<RET>") 'helm-projectile-find-file)
 
   ); user-config end
 
