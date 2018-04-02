@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: customize function
+# key: mf
+# --
+$1 ($2) {
+    $3
+}
