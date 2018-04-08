@@ -4,11 +4,13 @@
 # key: tt
 # --
 <template>
-$1
+  $1
 </template>
+
 <script>
-$2
+ $2
 </script>
+
 <style lang="less" scoped>
 
 </style>
