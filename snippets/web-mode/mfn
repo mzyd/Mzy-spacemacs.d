@@ -3,6 +3,6 @@
 # name: customize function
 # key: mf
 # --
-$1 ($2) {
-    $3
+$1 () {
+  $2
 }
