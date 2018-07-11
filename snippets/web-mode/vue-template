@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: vue-template
+# key: tt
+# --
+<template>
+  $1
+</template>
+
+<script>
+  export default {
+    name: '$2',
+  }
+</script>
+
+<style scoped>
+
+</style>
