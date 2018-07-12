@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: React-import
+# key: cim
+# --
+import React, {Component} from 'react';
+import {
+  Platform,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+

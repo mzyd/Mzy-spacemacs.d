@@ -31,6 +31,9 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     octave
+     typescript
+     php
      go
      react
      python
@@ -67,7 +70,7 @@ values."
                                       lsp-vue
                                       lsp-mode
                                       company-lsp
-                                      company-quick-help
+                                      ;; company-quick-help
                                       ember-mode
                                       vue-mode
                                       nyan-mode
@@ -92,7 +95,7 @@ values."
                                                    helm-flyspell flyspell-correct-helm clean-aindent-mode
                                                    helm-c-yasnippet ace-jump-helm-line helm-make
                                                    helm-themes helm-swoop smeargle
-                                                   ido-vertical-mode flx-ido company-quickhelp counsel-projectile
+                                                   ido-vertical-mode flx-ido counsel-projectile
                                                    window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
                                                    )
    ;; Defines the behaviour of Spacemacs when installing packages.
@@ -171,10 +174,14 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   ;; dotspacemacs-default-font '("Source Code Pro"
+   ;; dotspacemacs-default-font '("Fira Code"
+   dotspacemacs-default-font '("Hermit"
+   ;; dotspacemacs-default-font '("Monofur"
                                :size 18
                                ;; :size 24
-                               :weight ultra-light
+                               ;; :weight ultra-light
+                               :weight light
                                :width normal
                                :powerline-scale 1.1)
    ;; The leader key
@@ -363,7 +370,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq linum-format "%d ")
+  (setq linum-format " %d  ")
   ;; 设置powerline 默认风格
   (setq powerline-default-separator 'arrow)
   (electric-pair-mode t)
@@ -408,7 +415,7 @@ you should place your code here."
   (use-package lsp-vue :ensure)
   (use-package lsp-mode :ensure)
 
-  (use-package company-quickhelp :ensure)
+  ;; (use-package company-quickhelp :ensure)
   (use-package company-lsp
     :ensure
     :config
@@ -422,17 +429,17 @@ you should place your code here."
     (setq company-dabbrev-downcase nil)
     (setq company-idle-delay 0.5)
     (setq company-idle-delay 0.5)
-    (add-hook 'company-mode-hook 'company-quickhelp-mode)
+    ;; (add-hook 'company-mode-hook 'company-quickhelp-mode)
     (add-to-list 'company-backends 'company-lsp))
 
 
   (use-package web-mode
     :ensure
     :init
-    (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
+    ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
     (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
     :config
-    (add-hook 'web-mode-hook 'company-mode)
+    ;; (add-hook 'web-mode-hook 'company-mode)
     (add-hook 'web-mode-hook 'lsp-vue-enable))
 
 
@@ -447,7 +454,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#0a0814" "#f2241f" "#67b11d" "#b1951d" "#4f97d7" "#a31db1" "#28def0" "#b2b2b2"])
- '(company-idle-delay 0)
+ '(company-idle-delay 0 t)
  '(custom-safe-themes
    (quote
     ("f0c98535db38af17e81e491a77251e198241346306a90c25eb982b57e687d7c0" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "eea01f540a0f3bc7c755410ea146943688c4e29bea74a29568635670ab22f9bc" "39dd7106e6387e0c45dfce8ed44351078f6acd29a345d8b22e7b8e54ac25bac4" "cab317d0125d7aab145bc7ee03a1e16804d5abdfa2aa8738198ac30dc5f7b569" "8ed752276957903a270c797c4ab52931199806ccd9f0c3bb77f6f4b9e71b9272" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" default)))
@@ -458,7 +465,7 @@ you should place your code here."
  '(exec-path-from-shell-arguments (quote ("-l")))
  '(package-selected-packages
    (quote
-    (go-complete go-guru go-eldoc company-go go-mode company-lsp company-quickhelp lsp-vue org-mime ghub let-alist nyan-mode selectric-mode auto-save-buffers-enhanced react-snippets monokai-alt-theme monochrome-theme monokai-theme edit-indirect ssass-mode ac-php ac-php-core company-php php-runtime php-scratch phpunit phpcbf php-auto-yasnippets drupal-mode php-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic org-themis org-beautify-theme vue-html-mode vue-mode ember-yasnippets ember-mode youdao-dictionary names chinese-word-at-point web-mode tagedit slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake pug-mode minitest less-css-mode helm-gitignore helm-css-scss haml-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor emmet-mode company-web web-completion-data chruby bundler inf-ruby wgrep unfill smex org-projectile org-present org-pomodoro alert log4e gntp org-download mwim mmm-mode markdown-toc markdown-mode ivy-hydra htmlize helm-company helm-c-yasnippet gnuplot gh-md fuzzy flycheck-pos-tip pos-tip flycheck counsel-projectile counsel swiper ivy company-tern dash-functional company-statistics company auto-yasnippet ac-ispell auto-complete web-beautify tern livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc coffee-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
+    (tide typescript-mode php-extras go-complete go-guru go-eldoc company-go go-mode company-lsp company-quickhelp lsp-vue org-mime ghub let-alist nyan-mode selectric-mode auto-save-buffers-enhanced react-snippets monokai-alt-theme monochrome-theme monokai-theme edit-indirect ssass-mode ac-php ac-php-core company-php php-runtime php-scratch phpunit phpcbf php-auto-yasnippets drupal-mode php-mode yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode helm-pydoc cython-mode company-anaconda anaconda-mode pythonic org-themis org-beautify-theme vue-html-mode vue-mode ember-yasnippets ember-mode youdao-dictionary names chinese-word-at-point web-mode tagedit slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake pug-mode minitest less-css-mode helm-gitignore helm-css-scss haml-mode gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link evil-magit magit magit-popup git-commit with-editor emmet-mode company-web web-completion-data chruby bundler inf-ruby wgrep unfill smex org-projectile org-present org-pomodoro alert log4e gntp org-download mwim mmm-mode markdown-toc markdown-mode ivy-hydra htmlize helm-company helm-c-yasnippet gnuplot gh-md fuzzy flycheck-pos-tip pos-tip flycheck counsel-projectile counsel swiper ivy company-tern dash-functional company-statistics company auto-yasnippet ac-ispell auto-complete web-beautify tern livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor yasnippet multiple-cursors js2-mode js-doc coffee-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline restart-emacs request rainbow-delimiters popwin persp-mode pcre2el paradox spinner org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make projectile pkg-info epl helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight elisp-slime-nav dumb-jump f s diminish define-word column-enforce-mode clean-aindent-mode bind-map bind-key auto-highlight-symbol auto-compile packed dash aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core popup async))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
