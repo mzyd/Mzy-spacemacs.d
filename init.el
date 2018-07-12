@@ -67,10 +67,10 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
-                                      lsp-vue
-                                      lsp-mode
+                                      ;; lsp-vue
+                                      ;; lsp-mode
                                       company-lsp
-                                      ;; company-quick-help
+                                      company-quickhelp
                                       ember-mode
                                       vue-mode
                                       nyan-mode
@@ -165,6 +165,9 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
+
+                         ;; darcula-theme
+                         ;; doom-molokai
    dotspacemacs-themes '(
                          monokai-alt
                          spacemacs-dark
@@ -176,10 +179,9 @@ values."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    ;; dotspacemacs-default-font '("Source Code Pro"
    ;; dotspacemacs-default-font '("Fira Code"
-   dotspacemacs-default-font '("Hermit"
    ;; dotspacemacs-default-font '("Monofur"
+   dotspacemacs-default-font '("Hermit"
                                :size 18
-                               ;; :size 24
                                ;; :weight ultra-light
                                :weight light
                                :width normal
@@ -355,7 +357,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq tramp-ssh-controlmaster-options
         "-o ControlMaster=auto -o ControlPath='tramp.%%C' -o ControlPersist=no")
   (setq ns-use-srgb-colorspace nil)
-  ;; (fringe-mode 0)
+  (fringe-mode 0)
 
   (setq js2-mode-show-strict-warnings nil)
 
@@ -412,8 +414,8 @@ you should place your code here."
   ;; (define-key evil-normal-state-map (kbd "<RET>") 'helm-mini)
   (define-key evil-normal-state-map (kbd "<RET>") 'helm-projectile-find-file)
 
-  (use-package lsp-vue :ensure)
-  (use-package lsp-mode :ensure)
+  ;; (use-package lsp-vue :ensure)
+  ;; (use-package lsp-mode :ensure)
 
   ;; (use-package company-quickhelp :ensure)
   (use-package company-lsp
@@ -431,16 +433,6 @@ you should place your code here."
     (setq company-idle-delay 0.5)
     ;; (add-hook 'company-mode-hook 'company-quickhelp-mode)
     (add-to-list 'company-backends 'company-lsp))
-
-
-  (use-package web-mode
-    :ensure
-    :init
-    ;; (add-to-list 'auto-mode-alist '("\\.js\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
-    :config
-    ;; (add-hook 'web-mode-hook 'company-mode)
-    (add-hook 'web-mode-hook 'lsp-vue-enable))
 
 
   ); user-config end
