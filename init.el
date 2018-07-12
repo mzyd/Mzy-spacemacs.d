@@ -353,6 +353,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
   (setq js2-mode-show-strict-warnings nil)
 
+  (setq go-tab-width 4)
+
   ) ; user-init end
 
 (defun dotspacemacs/user-config ()
@@ -433,6 +435,7 @@ you should place your code here."
     :config
     (add-hook 'web-mode-hook 'company-mode)
     (add-hook 'web-mode-hook 'lsp-vue-enable))
+
 
   ); user-config end
 
