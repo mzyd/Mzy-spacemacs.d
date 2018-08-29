@@ -8,6 +8,8 @@ class $1 extends React.Component {
     $2
   }
   render() {
-    $3
+    return (
+      $3
+    )
   }
 }

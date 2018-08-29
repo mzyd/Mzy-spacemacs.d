@@ -3,4 +3,4 @@
 # name: log
 # key: ll
 # --
-console.log( "$1", $2 );
+console.log( "$1", $2 )

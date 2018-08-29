@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: React-import
+# key: rim
+# --
+import React, {Component} from 'react';

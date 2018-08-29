@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
 # name: React-const
-# key: cs
+# key: cn
 # --
 const $1 = $2
