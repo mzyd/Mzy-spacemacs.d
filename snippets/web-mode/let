@@ -3,4 +3,4 @@
 # name: let
 # key: let
 # --
-let $1 = $2;
+let $1 = $2

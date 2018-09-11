@@ -1,7 +1,8 @@
 # -*- mode: snippet -*-
 # name: React-import
-# key: im
+# key: fuck
 # --
 import React from 'react'
 import { render } from 'react-dom'
 import { Router, Route, hashHistory } from 'react-router'
+import PropTypes from 'prop-types'
