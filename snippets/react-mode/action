@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: action
+# key: act
+# --
+export const $1 = ($2) => {
+  return {
+    type: $3
+  }
+}
