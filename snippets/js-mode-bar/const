@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: const
+# key: cn
+# --
+const $1 = $2

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: generator-function
+# key: gfn
+# --
+function * ($1) {
+  $2
+}

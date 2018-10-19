@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: forj
+# key: forj
+# --
+for ( var j = $1; j < $2; j++ ) {
+    $3
+}

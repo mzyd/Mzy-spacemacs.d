@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: set-PropTypes
+# key: pp
+# --
+$1.propTypes = {
+  $2: PropTypes.$3.isRequired
+}

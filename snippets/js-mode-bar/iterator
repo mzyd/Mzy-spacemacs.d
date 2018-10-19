@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: iterator
+# key: iter
+# --
+function * iterEntries(obj) {
+  let keys = Object.keys(obj);
+  for (let i = 0; i < keys.length; i++) {
+    let key = keys[i];
+    yield [key, obj[key]];
+  }
+}

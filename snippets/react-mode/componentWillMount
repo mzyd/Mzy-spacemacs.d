@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: componentWillMount
+# key: cmw
+# --
+componentWillMount () {
+  $1
+}

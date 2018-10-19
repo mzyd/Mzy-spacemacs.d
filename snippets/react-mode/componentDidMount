@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: componentDidMount
+# key: cmd
+# --
+componentDidMount () {
+  $1
+}

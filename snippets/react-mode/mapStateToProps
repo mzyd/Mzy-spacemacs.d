@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: mapStateToProps
-# key: maps
+# key: mst
 # --
 const mapStateToProps = (state) => {
   return {
