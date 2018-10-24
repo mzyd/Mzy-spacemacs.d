@@ -450,6 +450,7 @@ you should place your code here."
     ;; (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
     :config
     (add-hook 'web-mode-hook 'company-mode)
+    (add-hook 'js-mode 'auto-completion)
     ;; (add-hook 'web-mode-hook 'lsp-vue-enable)
     )
 
