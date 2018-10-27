@@ -1,0 +1,398 @@
+diff --git a/init.el b/init.el
+index b3327ca..459d9ea 100644
+--- a/init.el
++++ b/init.el
+@@ -67,12 +67,7 @@ values."
+    ;; configuration in `dotspacemacs/user-config'.
+    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
+    dotspacemacs-additional-packages '(
+-                                      ;; lsp-vue
+-                                      lsp-mode
+-                                      company-lsp
+-                                      company-quick-help
+                                       ember-mode
+-                                      ;; vue-mode
+                                       nyan-mode
+                                       monokai-alt
+                                       )
+@@ -82,22 +77,22 @@ values."
+    ;; org-bullets : org-mode 主题包
+    dotspacemacs-excluded-packages '(
+                                     magit-gh-pulls ace-jump-mode magit-gitflow org-projectile evil-mc
+-                                                   evil-args evil-ediff evil-exchange evil-unimpaired
+-                                                   evil-indent-plus volatile-highlights smartparens
+-                                                   holy-mode skewer-mode rainbow-delimiters
+-                                                   highlight-indentation vi-tilde-fringe eyebrowse
+-                                                   smooth-scrolling org-repo-todo org-download org-timer
+-                                                   livid-mode git-gutter git-gutter-fringe  evil-escape
+-                                                   leuven-theme gh-md evil-lisp-state spray lorem-ipsum
+-                                                   ac-ispell auto-complete auto-dictionary
+-                                                   clang-format define-word google-translate disaster epic
+-                                                   fancy-battery org-present orgit orglue
+-                                                   helm-flyspell flyspell-correct-helm clean-aindent-mode
+-                                                   helm-c-yasnippet ace-jump-helm-line helm-make
+-                                                   helm-themes helm-swoop smeargle
+-                                                   ido-vertical-mode flx-ido company-quickhelp counsel-projectile
+-                                                   window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
+-                                                   )
++                                    evil-args evil-ediff evil-exchange evil-unimpaired
++                                    evil-indent-plus volatile-highlights smartparens
++                                    holy-mode skewer-mode rainbow-delimiters
++                                    highlight-indentation vi-tilde-fringe eyebrowse
++                                    smooth-scrolling org-repo-todo org-download org-timer
++                                    livid-mode git-gutter git-gutter-fringe  evil-escape
++                                    leuven-theme gh-md evil-lisp-state spray lorem-ipsum
++                                    ac-ispell auto-complete auto-dictionary
++                                    clang-format define-word google-translate disaster epic
++                                    fancy-battery org-present orgit orglue
++                                    helm-flyspell flyspell-correct-helm clean-aindent-mode
++                                    helm-c-yasnippet ace-jump-helm-line helm-make
++                                    helm-themes helm-swoop smeargle
++                                    ido-vertical-mode flx-ido company-quickhelp counsel-projectile
++                                    window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
++                                    )
+    ;; Defines the behaviour of Spacemacs when installing packages.
+    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
+    ;; `used-only' installs only explicitly used packages and uninstall any
+@@ -166,6 +161,8 @@ values."
+    ;; Press <SPC> T n to cycle to the next theme in the list (works great
+    ;; with 2 themes variants, one dark and one light)
+    dotspacemacs-themes '(
++                         tao
++                         leuven
+                          monokai-alt
+                          tsdh-dark
+                          sanityinc-tomorrow-blue
+@@ -422,16 +419,6 @@ you should place your code here."
+   ;; (define-key evil-normal-state-map (kbd "<RET>") 'helm-mini)
+   (define-key evil-normal-state-map (kbd "<RET>") 'helm-projectile-find-file)
+ 
+-  ;; (use-package lsp-vue :ensure)
+-  (use-package lsp-mode :ensure)
+-
+-  (use-package company-quickhelp :ensure)
+-  (use-package company-lsp
+-    :ensure
+-    :config
+-    ;; 开启yasnippet支持
+-    (setq company-lsp-enable-snippet t))
+-
+   (use-package company
+     :ensure
+     :config
+@@ -439,9 +426,7 @@ you should place your code here."
+     (setq company-dabbrev-downcase nil)
+     (setq company-idle-delay 0.5)
+     (setq company-idle-delay 0.5)
+-    (add-hook 'company-mode-hook 'company-quickhelp-mode)
+-    (add-to-list 'company-backends 'company-lsp))
+-
++    )
+ 
+   (use-package web-mode
+     :ensure
+@@ -451,7 +436,6 @@ you should place your code here."
+     :config
+     (add-hook 'web-mode-hook 'company-mode)
+     (add-hook 'js-mode 'auto-completion)
+-    ;; (add-hook 'web-mode-hook 'lsp-vue-enable)
+     )
+ 
+   ); user-config end
+@@ -465,7 +449,7 @@ you should place your code here."
+  ;; If there is more than one, they won't work right.
+  '(package-selected-packages
+    (quote
+-    (company-quickhelp youdao-dictionary yapfify ws-butler winum which-key web-mode web-beautify uuidgen use-package unfill twilight-bright-theme toc-org tao-theme tagedit swift-mode spaceline slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode paradox org-pomodoro org-plus-contrib org-mime org-bullets open-junk-file nyan-mode neotree mwim move-text monokai-alt-theme mmm-mode minitest markdown-toc macrostep live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-ag golden-ratio go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gandalf-theme fuzzy flycheck-pos-tip fill-column-indicator expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-iedit-state evil-anzu eval-sexp-fu emmet-mode ember-mode elisp-slime-nav dumb-jump diminish cython-mode company-web company-tern company-statistics company-lsp company-go company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow coffee-mode chruby bundler bind-map auto-yasnippet auto-highlight-symbol auto-compile atom-one-dark-theme anti-zenburn-theme aggressive-indent adaptive-wrap ace-window ace-link))))
++    (company-quickhelp youdao-dictionary yapfify ws-butler winum which-key web-mode web-beautify uuidgen use-package unfill twilight-bright-theme toc-org tao-theme tagedit swift-mode spaceline slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode paradox org-pomodoro org-plus-contrib org-mime org-bullets open-junk-file nyan-mode neotree mwim move-text monokai-alt-theme mmm-mode minitest markdown-toc macrostep live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-ag golden-ratio go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gandalf-theme fuzzy flycheck-pos-tip fill-column-indicator expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-iedit-state evil-anzu eval-sexp-fu emmet-mode ember-mode elisp-slime-nav dumb-jump diminish cython-mode company-web company-tern company-statistics company-go company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow coffee-mode chruby bundler bind-map auto-yasnippet auto-highlight-symbol auto-compile atom-one-dark-theme anti-zenburn-theme aggressive-indent adaptive-wrap ace-window ace-link))))
+ (custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+diff --git a/snippets/js-mode/addLoadEvent b/snippets/js-mode/addLoadEvent
+deleted file mode 100644
+index c8030c6..0000000
+--- a/snippets/js-mode/addLoadEvent
++++ /dev/null
+@@ -1,16 +0,0 @@
+-butor: Mzy
+-# name: addLoadEvent
+-# key: ade
+-# --
+-function addLoadEvent( func ) {
+-    var oldonload = window.onload;
+-    if ( typeof window.onload != 'function' ) {
+-        window.onload = func;
+-    } else {
+-        window.onload = function () {
+-            oldonload();
+-            func();
+-        };
+-    }
+-}
+-
+diff --git a/snippets/js-mode/arrow b/snippets/js-mode/arrow
+deleted file mode 100644
+index 9f92349..0000000
+--- a/snippets/js-mode/arrow
++++ /dev/null
+@@ -1,7 +0,0 @@
+-# -*- mode: snippet -*-
+-# name: arrow-function
+-# key: arrow
+-# --
+-const $1 = ($2) => {
+-  $3
+-}
+\ No newline at end of file
+diff --git a/snippets/js-mode/brace b/snippets/js-mode/brace
+deleted file mode 100644
+index 4fbb2a1..0000000
+--- a/snippets/js-mode/brace
++++ /dev/null
+@@ -1,5 +0,0 @@
+-# -*- mode: snippet -*-
+-# name: brace
+-# key: bb
+-# --
+-{ $1 }
+\ No newline at end of file
+diff --git a/snippets/js-mode/const b/snippets/js-mode/const
+deleted file mode 100644
+index ea3611e..0000000
+--- a/snippets/js-mode/const
++++ /dev/null
+@@ -1,6 +0,0 @@
+-# -*- mode: snippet -*-
+-# contributor: Mzy
+-# name: const
+-# key: cn
+-# --
+-const $1 = $2
+\ No newline at end of file
+diff --git a/snippets/js-mode/double-brace b/snippets/js-mode/double-brace
+deleted file mode 100644
+index a4a46ac..0000000
+--- a/snippets/js-mode/double-brace
++++ /dev/null
+@@ -1,5 +0,0 @@
+-# -*- mode: snippet -*-
+-# name: brace
+-# key: hh
+-# --
+-{{ $1 }}
+diff --git a/snippets/js-mode/fn b/snippets/js-mode/fn
+deleted file mode 100644
+index 61af910..0000000
+--- a/snippets/js-mode/fn
++++ /dev/null
+@@ -1,8 +0,0 @@
+-# -*- mode: snippet -*-
+-# contributor: Mzy
+-# name: fn
+-# key: fn
+-# --
+-function $1($2) {
+-    $3
+-}
+\ No newline at end of file
+diff --git a/snippets/js-mode/forLi b/snippets/js-mode/forLi
+deleted file mode 100644
+index 974df0c..0000000
+--- a/snippets/js-mode/forLi
++++ /dev/null
+@@ -1,8 +0,0 @@
+-# -*- mode: snippet -*-
+-# contributor: Mzy
+-# name: forli
+-# key: forl
+-# --
+-for ( let i = $1; i < $2; i++ ) {
+-    $3
+-}
+diff --git a/snippets/js-mode/fori b/snippets/js-mode/fori
+deleted file mode 100644
+index e21ccd4..0000000
+--- a/snippets/js-mode/fori
++++ /dev/null
+@@ -1,8 +0,0 @@
+-# -*- mode: snippet -*-
+-# contributor: Mzy
+-# name: fori
+-# key: fori
+-# --
+-for ( let i = $1; i < $2; i++ ) {
+-    $3
+-}
+diff --git a/snippets/js-mode/forin b/snippets/js-mode/forin
+deleted file mode 100644
+index a841416..0000000
+--- a/snippets/js-mode/forin
++++ /dev/null
+@@ -1,8 +0,0 @@
+-# -*- mode: snippet -*-
+-# contributor: Mzy
+-# name: forin
+-# key: forin
+-# --
+-for ( $1 in $2 ) {
+-    $3
+-}
+diff --git a/snippets/js-mode/forj b/snippets/js-mode/forj
+deleted file mode 100644
+index 3c22955..0000000
+--- a/snippets/js-mode/forj
++++ /dev/null
+@@ -1,8 +0,0 @@
+-# -*- mode: snippet -*-
+-# contributor: Mzy
+-# name: forj
+-# key: forj
+-# --
+-for ( var j = $1; j < $2; j++ ) {
+-    $3
+-}
+diff --git a/snippets/js-mode/forof b/snippets/js-mode/forof
+deleted file mode 100644
+index 62ae119..0000000
+--- a/snippets/js-mode/forof
++++ /dev/null
+@@ -1,8 +0,0 @@
+-# -*- mode: snippet -*-
+-# contributor: Mzy
+-# name: for-of
+-# key: forof
+-# --
+-for (let $1 of $2) {
+-  $3
+-}
+diff --git a/snippets/js-mode/if b/snippets/js-mode/if
+deleted file mode 100644
+index 678d50a..0000000
+--- a/snippets/js-mode/if
++++ /dev/null
+@@ -1,7 +0,0 @@
+-# -*- mode: snippet -*-
+-# name: if
+-# key: if
+-# --
+-if ($1) {
+-  $2
+-}
+diff --git a/snippets/js-mode/iterator b/snippets/js-mode/iterator
+deleted file mode 100644
+index 03888c2..0000000
+--- a/snippets/js-mode/iterator
++++ /dev/null
+@@ -1,12 +0,0 @@
+-# -*- mode: snippet -*-
+-# contributor: Mzy
+-# name: iterator
+-# key: iter
+-# --
+-function * iterEntries(obj) {
+-  let keys = Object.keys(obj);
+-  for (let i = 0; i < keys.length; i++) {
+-    let key = keys[i];
+-    yield [key, obj[key]];
+-  }
+-}
+diff --git a/snippets/js-mode/jq b/snippets/js-mode/jq
+deleted file mode 100644
+index 250b227..0000000
+--- a/snippets/js-mode/jq
++++ /dev/null
+@@ -1,5 +0,0 @@
+-# -*- mode: snippet -*-
+-# name: jq
+-# key: jq
+-# --
+-$( '$1' )
+diff --git a/snippets/js-mode/let b/snippets/js-mode/let
+deleted file mode 100644
+index 80cba36..0000000
+--- a/snippets/js-mode/let
++++ /dev/null
+@@ -1,6 +0,0 @@
+-# -*- mode: snippet -*-
+-# contributor: Mzy
+-# name: let
+-# key: let
+-# --
+-let $1 = $2
+\ No newline at end of file
+diff --git a/snippets/js-mode/log b/snippets/js-mode/log
+deleted file mode 100644
+index 5ca8fed..0000000
+--- a/snippets/js-mode/log
++++ /dev/null
+@@ -1,6 +0,0 @@
+-# -*- mode: snippet -*-
+-# contributor: Mzy
+-# name: log
+-# key: ll
+-# --
+-console.log( "$1", $2 )
+\ No newline at end of file
+diff --git a/snippets/js-mode/node-rr b/snippets/js-mode/node-rr
+deleted file mode 100644
+index ef00f63..0000000
+--- a/snippets/js-mode/node-rr
++++ /dev/null
+@@ -1,5 +0,0 @@
+-# -*- mode: snippet -*-
+-# name: node-require
+-# key: rr
+-# --
+-require('$1');
+diff --git a/snippets/js-mode/try b/snippets/js-mode/try
+deleted file mode 100644
+index 0e8b945..0000000
+--- a/snippets/js-mode/try
++++ /dev/null
+@@ -1,9 +0,0 @@
+-# -*- mode: snippet -*-
+-# name: try
+-# key: try
+-# --
+-try {
+-  $1
+-} catch (err) {
+-  $2
+-}
+diff --git a/snippets/js-mode/var b/snippets/js-mode/var
+deleted file mode 100644
+index 0152a6e..0000000
+--- a/snippets/js-mode/var
++++ /dev/null
+@@ -1,6 +0,0 @@
+-# -*- mode: snippet -*-
+-# contributor: Mzy
+-# name: var
+-# key: var
+-# --
+-var $1 = $2
+\ No newline at end of file
+diff --git a/snippets/react-mode/import-react b/snippets/react-mode/import-react
+index 2d9b78d..8fc67f6 100644
+--- a/snippets/react-mode/import-react
++++ b/snippets/react-mode/import-react
+@@ -2,5 +2,5 @@
+ # name: React - import
+ # key: import1
+ # --
+-import React, { Component } from 'react'
++import React from 'react'
+ import PropTypes from 'prop-types'
+diff --git a/snippets/react-mode/import1 b/snippets/react-mode/import1
+index 9f00af7..a06545e 100644
+--- a/snippets/react-mode/import1
++++ b/snippets/react-mode/import1
+@@ -1,5 +1,5 @@
+ # -*- mode: snippet -*-
+-# name: import1
++# name: importAny
+ # key: ii
+ # --
+-import $1 from '$2'
+\ No newline at end of file
++import $1 from '$2'

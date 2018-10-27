@@ -67,12 +67,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
-                                      ;; lsp-vue
-                                      lsp-mode
-                                      company-lsp
-                                      company-quick-help
                                       ember-mode
-                                      ;; vue-mode
                                       nyan-mode
                                       monokai-alt
                                       )
@@ -82,22 +77,22 @@ values."
    ;; org-bullets : org-mode 主题包
    dotspacemacs-excluded-packages '(
                                     magit-gh-pulls ace-jump-mode magit-gitflow org-projectile evil-mc
-                                                   evil-args evil-ediff evil-exchange evil-unimpaired
-                                                   evil-indent-plus volatile-highlights smartparens
-                                                   holy-mode skewer-mode rainbow-delimiters
-                                                   highlight-indentation vi-tilde-fringe eyebrowse
-                                                   smooth-scrolling org-repo-todo org-download org-timer
-                                                   livid-mode git-gutter git-gutter-fringe  evil-escape
-                                                   leuven-theme gh-md evil-lisp-state spray lorem-ipsum
-                                                   ac-ispell auto-complete auto-dictionary
-                                                   clang-format define-word google-translate disaster epic
-                                                   fancy-battery org-present orgit orglue
-                                                   helm-flyspell flyspell-correct-helm clean-aindent-mode
-                                                   helm-c-yasnippet ace-jump-helm-line helm-make
-                                                   helm-themes helm-swoop smeargle
-                                                   ido-vertical-mode flx-ido company-quickhelp counsel-projectile
-                                                   window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
-                                                   )
+                                    evil-args evil-ediff evil-exchange evil-unimpaired
+                                    evil-indent-plus volatile-highlights smartparens
+                                    holy-mode skewer-mode rainbow-delimiters
+                                    highlight-indentation vi-tilde-fringe eyebrowse
+                                    smooth-scrolling org-repo-todo org-download org-timer
+                                    livid-mode git-gutter git-gutter-fringe  evil-escape
+                                    leuven-theme gh-md evil-lisp-state spray lorem-ipsum
+                                    ac-ispell auto-complete auto-dictionary
+                                    clang-format define-word google-translate disaster epic
+                                    fancy-battery org-present orgit orglue
+                                    helm-flyspell flyspell-correct-helm clean-aindent-mode
+                                    helm-c-yasnippet ace-jump-helm-line helm-make
+                                    helm-themes helm-swoop smeargle
+                                    ido-vertical-mode flx-ido company-quickhelp counsel-projectile
+                                    window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
+                                    )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -166,6 +161,8 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         tao
+                         leuven
                          monokai-alt
                          tsdh-dark
                          sanityinc-tomorrow-blue
@@ -422,16 +419,6 @@ you should place your code here."
   ;; (define-key evil-normal-state-map (kbd "<RET>") 'helm-mini)
   (define-key evil-normal-state-map (kbd "<RET>") 'helm-projectile-find-file)
 
-  ;; (use-package lsp-vue :ensure)
-  (use-package lsp-mode :ensure)
-
-  (use-package company-quickhelp :ensure)
-  (use-package company-lsp
-    :ensure
-    :config
-    ;; 开启yasnippet支持
-    (setq company-lsp-enable-snippet t))
-
   (use-package company
     :ensure
     :config
@@ -439,9 +426,7 @@ you should place your code here."
     (setq company-dabbrev-downcase nil)
     (setq company-idle-delay 0.5)
     (setq company-idle-delay 0.5)
-    (add-hook 'company-mode-hook 'company-quickhelp-mode)
-    (add-to-list 'company-backends 'company-lsp))
-
+    )
 
   (use-package web-mode
     :ensure
@@ -451,7 +436,6 @@ you should place your code here."
     :config
     (add-hook 'web-mode-hook 'company-mode)
     (add-hook 'js-mode 'auto-completion)
-    ;; (add-hook 'web-mode-hook 'lsp-vue-enable)
     )
 
   ); user-config end
@@ -465,7 +449,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-quickhelp youdao-dictionary yapfify ws-butler winum which-key web-mode web-beautify uuidgen use-package unfill twilight-bright-theme toc-org tao-theme tagedit swift-mode spaceline slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode paradox org-pomodoro org-plus-contrib org-mime org-bullets open-junk-file nyan-mode neotree mwim move-text monokai-alt-theme mmm-mode minitest markdown-toc macrostep live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-ag golden-ratio go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gandalf-theme fuzzy flycheck-pos-tip fill-column-indicator expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-iedit-state evil-anzu eval-sexp-fu emmet-mode ember-mode elisp-slime-nav dumb-jump diminish cython-mode company-web company-tern company-statistics company-lsp company-go company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow coffee-mode chruby bundler bind-map auto-yasnippet auto-highlight-symbol auto-compile atom-one-dark-theme anti-zenburn-theme aggressive-indent adaptive-wrap ace-window ace-link))))
+    (company-quickhelp youdao-dictionary yapfify ws-butler winum which-key web-mode web-beautify uuidgen use-package unfill twilight-bright-theme toc-org tao-theme tagedit swift-mode spaceline slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs rbenv rake pyvenv pytest pyenv-mode py-isort pug-mode popwin pip-requirements persp-mode paradox org-pomodoro org-plus-contrib org-mime org-bullets open-junk-file nyan-mode neotree mwim move-text monokai-alt-theme mmm-mode minitest markdown-toc macrostep live-py-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc indent-guide hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers helm-pydoc helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-ag golden-ratio go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gandalf-theme fuzzy flycheck-pos-tip fill-column-indicator expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-matchit evil-magit evil-iedit-state evil-anzu eval-sexp-fu emmet-mode ember-mode elisp-slime-nav dumb-jump diminish cython-mode company-web company-tern company-statistics company-go company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow coffee-mode chruby bundler bind-map auto-yasnippet auto-highlight-symbol auto-compile atom-one-dark-theme anti-zenburn-theme aggressive-indent adaptive-wrap ace-window ace-link))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
