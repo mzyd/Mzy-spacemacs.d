@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: No state component
+# key: nostate
+# --
+
+import React from 'react'
+import PropTypes from 'prop-types'
+
+const $1 = (props) => {
+  return (
+    <div>
+      $2
+    </div>
+  )
+}
+
+export default $1

@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: log-color
+# key: llc
+# --
+console.log( "%c $1", 'background: yellow; color: red', $2 )

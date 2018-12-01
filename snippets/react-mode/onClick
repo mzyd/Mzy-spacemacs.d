@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: onClick
+# key: click
+# --
+onClick={ () => { $1 } }
