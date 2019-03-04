@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     ng2-mode
      fasd
      typescript
      swift
@@ -161,9 +162,9 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         monokai-alt
                          tao
                          leuven
-                         monokai-alt
                          tsdh-dark
                          sanityinc-tomorrow-blue
                          wheatgrass

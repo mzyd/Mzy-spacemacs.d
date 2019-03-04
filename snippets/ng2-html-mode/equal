@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: equal
+# key: pro
+# --
+$1="$2"
