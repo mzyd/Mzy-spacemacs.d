@@ -31,7 +31,6 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     ng2-mode
      fasd
      typescript
      swift
@@ -68,6 +67,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
+                                      ng2-mode
                                       ember-mode
                                       nyan-mode
                                       monokai-alt

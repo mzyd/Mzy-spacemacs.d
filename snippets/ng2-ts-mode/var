@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: var
+# key: var
+# --
+var $1 = $2

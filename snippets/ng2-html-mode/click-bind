@@ -2,4 +2,4 @@
 # name: bind-click
 # key: click
 # --
-(click)="onSelect($1)"
+(click)="$1($2)"
