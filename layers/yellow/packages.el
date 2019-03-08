@@ -39,7 +39,6 @@
     )
   )
 
-
 ;; (defun yellow/init-gulpjs()
 ;;   (use-package gulpjs
 ;;     :init))
@@ -175,7 +174,7 @@
   (set (make-local-variable 'company-minimum-prefix-length)
        mzy/company-minimum-prefix-length))
 
-(defvar mzy/company-minimum-prefix-length 2
+(defvar mzy/company-minimum-prefix-length 1
   "my own variable for company-minimum-prefix-length")
 
 (defvar mzy/company-idle-delay 0
@@ -244,3 +243,5 @@ tell application \"iTerm\"
 end tell
 " (expand-file-name default-directory))))
     (start-process "cd-iterm2" nil "osascript" "-e" cmd)))
+
+

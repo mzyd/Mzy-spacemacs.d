@@ -67,6 +67,8 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
+                                      cider
+                                      clojure-mode
                                       ng2-mode
                                       ember-mode
                                       nyan-mode
@@ -408,6 +410,9 @@ you should place your code here."
 
   ;; 选中当前光标处区域
   (global-set-key (kbd "C-=") 'er/expand-region)
+
+  ;; dired-mode 下的后退
+  (global-set-key (kbd "s-b") 'dired-up-directory)
 
   ;; org-mode 自动换行
   (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
