@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     yaml
      scala
      fasd
      typescript
@@ -68,6 +69,8 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
+                                      flucui-dark
+                                      flucui-light
                                       cider
                                       ;; clojure-mode
                                       ng2-mode
@@ -165,8 +168,10 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         monokai-alt
+                         flucui-dark
+                         lab-theme
                          tao
+                         monokai-alt
                          leuven
                          tsdh-dark
                          sanityinc-tomorrow-blue
@@ -186,7 +191,9 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Hermit"
+
+   ;; dotspacemacs-default-font '("Hermit"
+   dotspacemacs-default-font '("Operator Mono"
                                :size 18
                                ;; :size 24
                                :weight ultra-light
@@ -434,8 +441,7 @@ you should place your code here."
     :config
     ;; (setq company-minimum-prefix-length 1)
     (setq company-dabbrev-downcase nil)
-    ;; (setq company-idle-delay 0.5)
-    ;; (setq company-idle-delay 0.5)
+    ;; (setq company-idle-delay 0.1)
     )
 
   (use-package web-mode

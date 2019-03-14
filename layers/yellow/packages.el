@@ -177,7 +177,7 @@
 (defvar mzy/company-minimum-prefix-length 1
   "my own variable for company-minimum-prefix-length")
 
-(defvar mzy/company-idle-delay 0
+(defvar mzy/company-idle-delay 0.1
   "my own variable for company-idle-delay")
 
 (add-hook 'company-mode-hook #'mzy/company-init)
