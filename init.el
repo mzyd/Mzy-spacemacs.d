@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     scala
      fasd
      typescript
      swift
@@ -68,7 +69,7 @@ values."
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
                                       cider
-                                      clojure-mode
+                                      ;; clojure-mode
                                       ng2-mode
                                       ember-mode
                                       nyan-mode
@@ -417,21 +418,24 @@ you should place your code here."
   ;; org-mode 自动换行
   (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
 
+  ;; (add-to-list 'company-mode ')
+
   ;; 设置文件自动保存.
-  (auto-save-enable)
-  (setq auto-save-slient t)
+  ;; (auto-save-enable)
+  ;; (setq auto-save-slient t)
 
   ;; normal-state 下 RET 键打开最近的 buffer 列表
   ;; (define-key evil-normal-state-map (kbd "<RET>") 'helm-mini)
   (define-key evil-normal-state-map (kbd "<RET>") 'helm-projectile-find-file)
 
+  (global-company-mode t)
   (use-package company
     :ensure
     :config
-    (setq company-minimum-prefix-length 1)
+    ;; (setq company-minimum-prefix-length 1)
     (setq company-dabbrev-downcase nil)
-    (setq company-idle-delay 0.5)
-    (setq company-idle-delay 0.5)
+    ;; (setq company-idle-delay 0.5)
+    ;; (setq company-idle-delay 0.5)
     )
 
   (use-package web-mode
