@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     shell-scripts
      yaml
      scala
      fasd
@@ -69,8 +70,9 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
-                                      flucui-dark
-                                      flucui-light
+                                      rainbow-mode ;; for css
+                                      flucui-themes
+                                      lab-theme
                                       cider
                                       ;; clojure-mode
                                       ng2-mode
@@ -84,22 +86,22 @@ values."
    ;; org-bullets : org-mode 主题包
    dotspacemacs-excluded-packages '(
                                     magit-gh-pulls ace-jump-mode magit-gitflow org-projectile evil-mc
-                                    evil-args evil-ediff evil-exchange evil-unimpaired
-                                    evil-indent-plus volatile-highlights smartparens
-                                    holy-mode skewer-mode rainbow-delimiters
-                                    highlight-indentation vi-tilde-fringe eyebrowse
-                                    smooth-scrolling org-repo-todo org-download org-timer
-                                    livid-mode git-gutter git-gutter-fringe  evil-escape
-                                    leuven-theme gh-md evil-lisp-state spray lorem-ipsum
-                                    ac-ispell auto-complete auto-dictionary
-                                    clang-format define-word google-translate disaster epic
-                                    fancy-battery org-present orgit orglue
-                                    helm-flyspell flyspell-correct-helm clean-aindent-mode
-                                    helm-c-yasnippet ace-jump-helm-line helm-make
-                                    helm-themes helm-swoop smeargle
-                                    ido-vertical-mode flx-ido company-quickhelp counsel-projectile
-                                    window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
-                                    )
+                                                   evil-args evil-ediff evil-exchange evil-unimpaired
+                                                   evil-indent-plus volatile-highlights smartparens
+                                                   holy-mode skewer-mode rainbow-delimiters
+                                                   highlight-indentation vi-tilde-fringe eyebrowse
+                                                   smooth-scrolling org-repo-todo org-download org-timer
+                                                   livid-mode git-gutter git-gutter-fringe  evil-escape
+                                                   leuven-theme gh-md evil-lisp-state spray lorem-ipsum
+                                                   ac-ispell auto-complete auto-dictionary
+                                                   clang-format define-word google-translate disaster epic
+                                                   fancy-battery org-present orgit orglue
+                                                   helm-flyspell flyspell-correct-helm clean-aindent-mode
+                                                   helm-c-yasnippet ace-jump-helm-line helm-make
+                                                   helm-themes helm-swoop smeargle
+                                                   ido-vertical-mode flx-ido company-quickhelp counsel-projectile
+                                                   window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
+                                                   )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -168,8 +170,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         flucui-dark
-                         lab-theme
+                         ;; flucui-themes
                          tao
                          monokai-alt
                          leuven
@@ -194,6 +195,7 @@ values."
 
    ;; dotspacemacs-default-font '("Hermit"
    dotspacemacs-default-font '("Operator Mono"
+   ;; dotspacemacs-default-font '("Fira Code"
                                :size 18
                                ;; :size 24
                                :weight ultra-light
@@ -425,6 +427,8 @@ you should place your code here."
   ;; org-mode 自动换行
   (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
 
+  (add-hook 'css-mode-hook ('rainbow-mode))
+
   ;; (add-to-list 'company-mode ')
 
   ;; 设置文件自动保存.
@@ -441,7 +445,8 @@ you should place your code here."
     :config
     ;; (setq company-minimum-prefix-length 1)
     (setq company-dabbrev-downcase nil)
-    ;; (setq company-idle-delay 0.1)
+    (setq company-prefix 1)
+    (setq company-idle-delay 0.1)
     )
 
   (use-package web-mode
@@ -453,6 +458,11 @@ you should place your code here."
     (add-hook 'web-mode-hook 'company-mode)
     (add-hook 'js-mode 'auto-completion)
     )
+
+  ;; (setq company-prefix 1)
+
+  (require 'zone)
+  (zone-when-idle 600)
 
   ); user-config end
 

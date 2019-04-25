@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: println
+# key: pp
+# --
+println("$1", $2)
