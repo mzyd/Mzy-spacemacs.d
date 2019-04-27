@@ -72,7 +72,7 @@ values."
    dotspacemacs-additional-packages '(
                                       rainbow-mode ;; for css
                                       flucui-themes
-                                      lab-theme
+                                      lab-themes
                                       cider
                                       ;; clojure-mode
                                       ng2-mode
@@ -197,7 +197,7 @@ values."
    dotspacemacs-default-font '("Operator Mono"
    ;; dotspacemacs-default-font '("Fira Code"
                                :size 18
-                               ;; :size 24
+                               :size 24
                                :weight ultra-light
                                :width normal
                                :powerline-scale 1.1)
@@ -427,7 +427,7 @@ you should place your code here."
   ;; org-mode 自动换行
   (add-hook 'org-mode-hook (lambda () (setq truncate-lines nil)))
 
-  (add-hook 'css-mode-hook ('rainbow-mode))
+  (add-hook 'css-mode-hook 'rainbow-mode)
 
   ;; (add-to-list 'company-mode ')
 
@@ -463,6 +463,11 @@ you should place your code here."
 
   (require 'zone)
   (zone-when-idle 600)
+
+  ;; set window position at startup
+  (set-frame-position (selected-frame) 1900 0)
+  (set-frame-width (selected-frame) 176)
+  (set-frame-height (selected-frame) 120)
 
   ); user-config end
 
