@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: anon-arrow-function
+# key: aa
+# --
+($1) => {
+  $2
+}

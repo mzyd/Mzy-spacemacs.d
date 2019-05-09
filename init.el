@@ -70,6 +70,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
+                                      symbol-overlay
                                       rainbow-mode ;; for css
                                       flucui-themes
                                       lab-themes
@@ -170,7 +171,6 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         ;; flucui-themes
                          tao
                          monokai-alt
                          leuven
@@ -197,7 +197,7 @@ values."
    dotspacemacs-default-font '("Operator Mono"
    ;; dotspacemacs-default-font '("Fira Code"
                                :size 18
-                               :size 24
+                               ;; :size 24
                                :weight ultra-light
                                :width normal
                                :powerline-scale 1.1)
@@ -464,10 +464,16 @@ you should place your code here."
   (require 'zone)
   (zone-when-idle 600)
 
-  ;; set window position at startup
-  (set-frame-position (selected-frame) 1900 0)
-  (set-frame-width (selected-frame) 176)
-  (set-frame-height (selected-frame) 120)
+  ;; ;; set window position at startup
+  ;; (set-frame-position (selected-frame) 1900 0)
+  ;; (set-frame-width (selected-frame) 176)
+  ;; (set-frame-height (selected-frame) 120)
+
+  (global-set-key (kbd "M-i") 'symbol-overlay-put)
+  (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
+  (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
+  (global-set-key (kbd "<f7>") 'symbol-overlay-mode)
+  (global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
 
   ); user-config end
 
