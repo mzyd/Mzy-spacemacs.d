@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: red-console
+# key: redc
+# --
+console.log(chalk.red("$1"), $2)

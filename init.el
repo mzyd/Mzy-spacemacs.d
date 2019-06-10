@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     sql
      shell-scripts
      yaml
      scala
@@ -70,6 +71,10 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
+                                      git-gutter
+                                      lsp-ui
+                                      company-lsp
+                                      helm-lsp
                                       symbol-overlay
                                       rainbow-mode ;; for css
                                       flucui-themes
@@ -86,13 +91,13 @@ values."
    ;; A list of packages that will not be installed and loaded.
    ;; org-bullets : org-mode 主题包
    dotspacemacs-excluded-packages '(
-                                    magit-gh-pulls ace-jump-mode magit-gitflow org-projectile evil-mc
+                                      magit-gh-pulls magit-gitflow org-projectile evil-mc
                                                    evil-args evil-ediff evil-exchange evil-unimpaired
                                                    evil-indent-plus volatile-highlights smartparens
                                                    holy-mode skewer-mode rainbow-delimiters
                                                    highlight-indentation vi-tilde-fringe eyebrowse
                                                    smooth-scrolling org-repo-todo org-download org-timer
-                                                   livid-mode git-gutter git-gutter-fringe  evil-escape
+                                                   livid-mode evil-escape
                                                    leuven-theme gh-md evil-lisp-state spray lorem-ipsum
                                                    ac-ispell auto-complete auto-dictionary
                                                    clang-format define-word google-translate disaster epic
@@ -195,7 +200,7 @@ values."
 
    ;; dotspacemacs-default-font '("Hermit"
    dotspacemacs-default-font '("Operator Mono"
-   ;; dotspacemacs-default-font '("Fira Code"
+                               ;; dotspacemacs-default-font '("Fira Code"
                                :size 18
                                ;; :size 24
                                :weight ultra-light
@@ -439,10 +444,12 @@ you should place your code here."
   ;; (define-key evil-normal-state-map (kbd "<RET>") 'helm-mini)
   (define-key evil-normal-state-map (kbd "<RET>") 'helm-projectile-find-file)
 
-  (global-company-mode t)
+  (global-git-gutter-mode +1)
+
   (use-package company
     :ensure
     :config
+    (global-company-mode t)
     ;; (setq company-minimum-prefix-length 1)
     (setq company-dabbrev-downcase nil)
     (setq company-prefix 1)
@@ -469,6 +476,7 @@ you should place your code here."
   ;; (set-frame-width (selected-frame) 176)
   ;; (set-frame-height (selected-frame) 120)
 
+  ;; for symbol-overlay
   (global-set-key (kbd "M-i") 'symbol-overlay-put)
   (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
   (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
