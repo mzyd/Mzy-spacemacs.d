@@ -91,7 +91,7 @@ values."
    ;; A list of packages that will not be installed and loaded.
    ;; org-bullets : org-mode 主题包
    dotspacemacs-excluded-packages '(
-                                      magit-gh-pulls magit-gitflow org-projectile evil-mc
+                                    magit-gh-pulls magit-gitflow org-projectile evil-mc
                                                    evil-args evil-ediff evil-exchange evil-unimpaired
                                                    evil-indent-plus volatile-highlights smartparens
                                                    holy-mode skewer-mode rainbow-delimiters
@@ -445,6 +445,23 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "<RET>") 'helm-projectile-find-file)
 
   (global-git-gutter-mode +1)
+
+  (custom-set-variables
+   '(git-gutter:window-width 2)
+   ;; '(git-gutter:modified-sign "☁ ")
+   ;; '(git-gutter:added-sign "☀ ")
+   ;; '(git-gutter:deleted-sign "☂ ")
+
+   '(git-gutter:modified-sign "♣ ")
+   '(git-gutter:added-sign "♦ ")
+   '(git-gutter:deleted-sign "✘ ")
+   '(git-gutter:lighter "GG")
+   )
+
+  ;; (set-face-background 'git-gutter:modified "yellow") ;; background color
+  (set-face-foreground 'git-gutter:modified "black")
+  (set-face-foreground 'git-gutter:added "green")
+  (set-face-foreground 'git-gutter:deleted "red")
 
   (use-package company
     :ensure
