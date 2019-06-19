@@ -79,6 +79,9 @@ values."
                                       rainbow-mode ;; for css
                                       flucui-themes
                                       lab-themes
+                                      calmer-forest-theme
+                                      green-phosphor-theme
+                                      sexy-monochrome
                                       cider
                                       ;; clojure-mode
                                       ng2-mode
@@ -176,6 +179,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         sexy-monochrome
                          tao
                          monokai-alt
                          leuven
@@ -200,7 +204,7 @@ values."
 
    ;; dotspacemacs-default-font '("Hermit"
    dotspacemacs-default-font '("Operator Mono"
-                               ;; dotspacemacs-default-font '("Fira Code"
+   ;; dotspacemacs-default-font '("Fira Code"
                                :size 18
                                ;; :size 24
                                :weight ultra-light
@@ -410,7 +414,7 @@ you should place your code here."
   (global-hungry-delete-mode )
 
   ;; c - mode
-  (setq c-basic-offset 4)
+  ;; (setq c-basic-offset 4)
 
   ;; 注释
   (global-set-key (kbd "M-m ;") 'evilnc-comment-or-uncomment-lines)
@@ -459,7 +463,7 @@ you should place your code here."
    )
 
   ;; (set-face-background 'git-gutter:modified "yellow") ;; background color
-  (set-face-foreground 'git-gutter:modified "black")
+  (set-face-foreground 'git-gutter:modified "yellow")
   (set-face-foreground 'git-gutter:added "green")
   (set-face-foreground 'git-gutter:deleted "red")
 
@@ -499,6 +503,8 @@ you should place your code here."
   (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
   (global-set-key (kbd "<f7>") 'symbol-overlay-mode)
   (global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
+
+  ;; (load-theme 'flucui-dark)
 
   ); user-config end
 
