@@ -202,13 +202,15 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
 
-   ;; dotspacemacs-default-font '("Hermit"
-   dotspacemacs-default-font '("Operator Mono"
-   ;; dotspacemacs-default-font '("Fira Code"
+   dotspacemacs-default-font '("Hermit"
+   ;; dotspacemacs-default-font '("Monofur Nerd Font Mono"
+                               ;; dotspacemacs-default-font '("Operator Mono"
+                               ;; dotspacemacs-default-font '("Indie Flower"
                                :size 18
+                               ;; :spacing 2
                                ;; :size 24
                                :weight ultra-light
-                               :width normal
+                               ;; :width normal
                                :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
