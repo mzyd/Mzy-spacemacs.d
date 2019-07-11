@@ -483,10 +483,18 @@ you should place your code here."
     :ensure
     :init
     (add-to-list 'auto-mode-alist '("\\.js\\'" . react-mode))
+    (add-to-list 'auto-mode-alist '("\\.wxml\\'" . web-mode))
     ;; (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode))
     :config
     (add-hook 'web-mode-hook 'company-mode)
     (add-hook 'js-mode 'auto-completion)
+    )
+
+  (use-package css-mode
+    :ensure
+    :init
+    (add-to-list 'auto-mode-alist '("\\.scss\\'" . css-mode))
+    (add-to-list 'auto-mode-alist '("\\.wxss\\'" . css-mode))
     )
 
   ;; (setq company-prefix 1)
