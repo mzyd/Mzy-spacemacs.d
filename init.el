@@ -71,6 +71,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
+                                      dart-mode
                                       git-gutter
                                       lsp-ui
                                       company-lsp
