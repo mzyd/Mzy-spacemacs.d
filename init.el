@@ -79,6 +79,7 @@ values."
                                       symbol-overlay
                                       rainbow-mode ;; for css
                                       flucui-themes
+                                      dracula-theme
                                       lab-themes
                                       calmer-forest-theme
                                       green-phosphor-theme
@@ -180,6 +181,7 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         dracula
                          sexy-monochrome
                          tao
                          monokai-alt
