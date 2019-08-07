@@ -7,8 +7,7 @@
 You should not put any user code in this function besides modifying the variable
 values."
   (setq-default
-   ;; Base distribution to use. This is a layer contained in the directory
-   ;; `+distribution'. For now available distributions are `spacemacs-base'
+   ;; Base distribution to use; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
    dotspacemacs-distribution 'spacemacs
    ;; Lazy installation of layers (i.e. layers are installed only when a file
@@ -71,6 +70,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
+                                      flutter
                                       dart-mode
                                       git-gutter
                                       lsp-ui
@@ -455,9 +455,6 @@ you should place your code here."
 
   (custom-set-variables
    '(git-gutter:window-width 2)
-   ;; '(git-gutter:modified-sign "☁ ")
-   ;; '(git-gutter:added-sign "☀ ")
-   ;; '(git-gutter:deleted-sign "☂ ")
 
    '(git-gutter:modified-sign "♣ ")
    '(git-gutter:added-sign "♦ ")
@@ -516,6 +513,25 @@ you should place your code here."
   (global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
 
   ;; (load-theme 'flucui-dark)
+
+  (use-package lsp-mode
+    :commands lsp)
+
+  (use-package dart-mode
+    :hook (dart-mode . lsp)
+    :after lsp
+    ;; :ensure-system-package (dart_language_server . "pub global activate dart_language_server")
+    :custom
+    (dart-format-on-save t)
+    (dart-sdk-path "/Users/mzy/dev/flutter/bin/cache/dart-sdk/"))
+
+  (use-package flutter
+    :after dart-mode
+    :bind (:map dart-mode-map
+                ("C-M-x" . #'flutter-run-or-hot-reload))
+    :custom
+    (flutter-sdk-path "/Users/mzy/dev/flutter"))
+
 
   ); user-config end
 
