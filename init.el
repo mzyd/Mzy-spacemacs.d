@@ -70,9 +70,10 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
-                                      flutter
-                                      dart-mode
-                                      git-gutter
+                                      diff-hl
+                                      ;; flutter
+                                      ;; dart-mode
+                                      ;; git-gutter
                                       lsp-ui
                                       company-lsp
                                       helm-lsp
@@ -97,22 +98,22 @@ values."
    ;; org-bullets : org-mode 主题包
    dotspacemacs-excluded-packages '(
                                     magit-gh-pulls magit-gitflow org-projectile evil-mc
-                                                   evil-args evil-ediff evil-exchange evil-unimpaired
-                                                   evil-indent-plus volatile-highlights smartparens
-                                                   holy-mode skewer-mode rainbow-delimiters
-                                                   highlight-indentation vi-tilde-fringe eyebrowse
-                                                   smooth-scrolling org-repo-todo org-download org-timer
-                                                   livid-mode evil-escape
-                                                   leuven-theme gh-md evil-lisp-state spray lorem-ipsum
-                                                   ac-ispell auto-complete auto-dictionary
-                                                   clang-format define-word google-translate disaster epic
-                                                   fancy-battery org-present orgit orglue
-                                                   helm-flyspell flyspell-correct-helm clean-aindent-mode
-                                                   helm-c-yasnippet ace-jump-helm-line helm-make
-                                                   helm-themes helm-swoop smeargle
-                                                   ido-vertical-mode flx-ido company-quickhelp counsel-projectile
-                                                   window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
-                                                   )
+                                    evil-args evil-ediff evil-exchange evil-unimpaired
+                                    evil-indent-plus volatile-highlights smartparens
+                                    holy-mode skewer-mode rainbow-delimiters
+                                    highlight-indentation vi-tilde-fringe eyebrowse
+                                    smooth-scrolling org-repo-todo org-download org-timer
+                                    livid-mode evil-escape
+                                    leuven-theme gh-md evil-lisp-state spray lorem-ipsum
+                                    ac-ispell auto-complete auto-dictionary
+                                    clang-format define-word google-translate disaster epic
+                                    fancy-battery org-present orgit orglue
+                                    helm-flyspell flyspell-correct-helm clean-aindent-mode
+                                    helm-c-yasnippet ace-jump-helm-line helm-make
+                                    helm-themes helm-swoop smeargle
+                                    ido-vertical-mode flx-ido company-quickhelp counsel-projectile
+                                    window-purpose ivy-purpose helm-purpose spacemacs-purpose-popwin
+                                    )
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -206,7 +207,7 @@ values."
    ;; quickly tweak the mode-line size to make separators look not too crappy.
 
    dotspacemacs-default-font '("Hermit"
-   ;; dotspacemacs-default-font '("Monofur Nerd Font Mono"
+                               ;; dotspacemacs-default-font '("Monofur Nerd Font Mono"
                                ;; dotspacemacs-default-font '("Operator Mono"
                                ;; dotspacemacs-default-font '("Indie Flower"
                                :size 18
@@ -403,8 +404,8 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq linum-format "%d ")
-  ;; 设置powerline 默认风格
+  (setq linum-format " %d ")
+  ;; setup powerline
   (setq powerline-default-separator 'arrow)
   (electric-pair-mode t)
 
@@ -415,7 +416,6 @@ you should place your code here."
   (global-set-key (kbd "TAB") 'yas-expand)
   ;; (global-set-key (kbd "s-;") 'hippie-expand)
 
-  ;; 一次删除多个空格
   (global-hungry-delete-mode )
 
   ;; c - mode
@@ -424,15 +424,12 @@ you should place your code here."
   ;; 注释
   (global-set-key (kbd "M-m ;") 'evilnc-comment-or-uncomment-lines)
 
-  ;; 自动对齐
   (global-set-key (kbd "M-m =") 'spacemacs/indent-region-or-buffer)
-  ;; 设置js文档注释
+  ;; setup document comment for js
   (global-set-key (kbd "M-m o c") 'js-doc-insert-function-doc-snippet)
 
-  ;; web-mode 内手动调用, 显示文件路径.
   (global-set-key (kbd "s-;") 'company-files)
 
-  ;; 选中当前光标处区域
   (global-set-key (kbd "C-=") 'er/expand-region)
 
   ;; dired-mode 下的后退
@@ -453,21 +450,37 @@ you should place your code here."
   ;; (define-key evil-normal-state-map (kbd "<RET>") 'helm-mini)
   (define-key evil-normal-state-map (kbd "<RET>") 'helm-projectile-find-file)
 
-  (global-git-gutter-mode +1)
+  ;; (global-git-gutter-mode +1)
+  ;; (custom-set-variables
+  ;;  '(git-gutter:window-width 2)
+  ;;  '(git-gutter:modified-sign "♣ ")
+  ;;  '(git-gutter:added-sign "♦ ")
+  ;;  '(git-gutter:deleted-sign "✘ ")
+  ;;  '(git-gutter:lighter "GG")
+  ;;  )
+  ;; ;; (set-face-background 'git-gutter:modified "yellow") ;; background color
+  ;; (set-face-foreground 'git-gutter:modified "yellow")
+  ;; (set-face-foreground 'git-gutter:added "green")
+  ;; (set-face-foreground 'git-gutter:deleted "red")
 
-  (custom-set-variables
-   '(git-gutter:window-width 2)
-
-   '(git-gutter:modified-sign "♣ ")
-   '(git-gutter:added-sign "♦ ")
-   '(git-gutter:deleted-sign "✘ ")
-   '(git-gutter:lighter "GG")
-   )
-
-  ;; (set-face-background 'git-gutter:modified "yellow") ;; background color
-  (set-face-foreground 'git-gutter:modified "yellow")
-  (set-face-foreground 'git-gutter:added "green")
-  (set-face-foreground 'git-gutter:deleted "red")
+  (use-package diff-hl
+    :ensure t
+    :diminish "D"
+    :config
+    ;; Highlight changed files in the fringe of Dired
+    (add-hook 'dired-mode-hook 'diff-hl-dired-mode 'org-mode-hook 'prog-mode-hook)
+    (global-diff-hl-mode)
+    ;;(add-hook 'org-mode-hook 'diff-hl-mode)
+    ;; Fall back to the display margin, if the fringe is unavailable
+    (unless (display-graphic-p) (diff-hl-margin-mode))
+    ;; Highlight changes to the current file in the fringe
+    (setq diff-hl-fringe-bmp-function 'diff-hl-fringe-bmp-from-type)
+    ;; Right fringe
+    (diff-hl-margin-mode)
+    (diff-hl-margin-mode t)
+    (diff-hl-flydiff-mode t)
+    (setq diff-hl-margin-side 'left)
+    )
 
   (use-package company
     :ensure
@@ -533,7 +546,6 @@ you should place your code here."
                 ("C-M-x" . #'flutter-run-or-hot-reload))
     :custom
     (flutter-sdk-path "/Users/mzy/dev/flutter"))
-
 
   ); user-config end
 
