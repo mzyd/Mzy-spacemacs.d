@@ -210,7 +210,7 @@ values."
                                ;; dotspacemacs-default-font '("Monofur Nerd Font Mono"
                                ;; dotspacemacs-default-font '("Operator Mono"
                                ;; dotspacemacs-default-font '("Indie Flower"
-                               :size 18
+                               :size 24
                                ;; :spacing 2
                                ;; :size 24
                                :weight ultra-light
@@ -413,7 +413,9 @@ you should place your code here."
   (show-paren-mode t)
   (setq org-src-fontify-natively t)
   (setq aya-persist-snippets-dir "/Users/Mzy/.spacemacs.d/snippets/")
+
   (global-set-key (kbd "TAB") 'yas-expand)
+
   ;; (global-set-key (kbd "s-;") 'hippie-expand)
 
   (global-hungry-delete-mode )
@@ -465,20 +467,10 @@ you should place your code here."
 
   (use-package diff-hl
     :ensure t
-    :diminish "D"
     :config
-    ;; Highlight changed files in the fringe of Dired
-    (add-hook 'dired-mode-hook 'diff-hl-dired-mode 'org-mode-hook 'prog-mode-hook)
-    (global-diff-hl-mode)
-    ;;(add-hook 'org-mode-hook 'diff-hl-mode)
-    ;; Fall back to the display margin, if the fringe is unavailable
-    (unless (display-graphic-p) (diff-hl-margin-mode))
-    ;; Highlight changes to the current file in the fringe
-    (setq diff-hl-fringe-bmp-function 'diff-hl-fringe-bmp-from-type)
-    ;; Right fringe
-    (diff-hl-margin-mode)
+    (diff-hl-flydiff-mode)
+    (global-diff-hl-mode +1)
     (diff-hl-margin-mode t)
-    (diff-hl-flydiff-mode t)
     (setq diff-hl-margin-side 'left)
     )
 

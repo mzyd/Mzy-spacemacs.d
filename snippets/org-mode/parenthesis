@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: parenthesis
+# key: pp
+# --
+($1)

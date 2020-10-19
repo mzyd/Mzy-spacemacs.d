@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # name: arrow-function
-# key: arrow
+# key: ar
 # --
 const $1 = ($2) => {
   $3
