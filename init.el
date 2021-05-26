@@ -70,6 +70,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    ;; 要安装的 package 放在这里,  如果不需要做额外的配置, 额外配置写在 better-defaults 里面
    dotspacemacs-additional-packages '(
+                                      nodejs-repl
                                       diff-hl
                                       ;; flutter
                                       ;; dart-mode
@@ -412,7 +413,7 @@ you should place your code here."
   (setq electric-pair-inhibit-predicate 'electric-pair-conservative-inhibit)
   (show-paren-mode t)
   (setq org-src-fontify-natively t)
-  (setq aya-persist-snippets-dir "/Users/Mzy/.spacemacs.d/snippets/")
+  (setq aya-persist-snippets-dir "/Users/jack/.spacemacs.d/snippets/")
 
   (global-set-key (kbd "TAB") 'yas-expand)
 
@@ -516,28 +517,11 @@ you should place your code here."
   (global-set-key (kbd "M-i") 'symbol-overlay-put)
   (global-set-key (kbd "M-n") 'symbol-overlay-switch-forward)
   (global-set-key (kbd "M-p") 'symbol-overlay-switch-backward)
-  (global-set-key (kbd "<f7>") 'symbol-overlay-mode)
+  ;; (global-set-key (kbd "<f7>") 'symbol-overlay-mode)
   (global-set-key (kbd "<f8>") 'symbol-overlay-remove-all)
-
-  ;; (load-theme 'flucui-dark)
 
   (use-package lsp-mode
     :commands lsp)
-
-  (use-package dart-mode
-    :hook (dart-mode . lsp)
-    :after lsp
-    ;; :ensure-system-package (dart_language_server . "pub global activate dart_language_server")
-    :custom
-    (dart-format-on-save t)
-    (dart-sdk-path "/Users/mzy/dev/flutter/bin/cache/dart-sdk/"))
-
-  (use-package flutter
-    :after dart-mode
-    :bind (:map dart-mode-map
-                ("C-M-x" . #'flutter-run-or-hot-reload))
-    :custom
-    (flutter-sdk-path "/Users/mzy/dev/flutter"))
 
   ); user-config end
 

@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# contributor: Mzy
+# name: code-block
+# key: cc
+# --
+#+BEGIN_SRC $1
+$2
+#+END_SRC

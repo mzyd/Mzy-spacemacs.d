@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 # contributor: Mzy
-# name: subline
-# key: ss
+# name: highlight
+# key: ll
 # --
-_$1_
+[[$1]]
